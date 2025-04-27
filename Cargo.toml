@@ -1,0 +1,14 @@
+[package]
+name = "exrs"
+authors = ["suquiya <22910980+suquiya@users.noreply.github.com>"]
+edition = "2024"
+description = "exrs is a command executor wrapping `std::process::Command`."
+license = "MIT"
+version = "1.0.0"
+
+[features]
+cmd = []
+shell = ["cmd"]
+default = ["cmd"]
+
+[dependencies]
