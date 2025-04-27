@@ -169,7 +169,7 @@ macro_rules! exes_with_result {
 #[macro_export]
 macro_rules! cmd{
     ($($arg:expr),*) => {
-        Cmd::from_str_args(vec![$($arg),*])
+        Cmd::from_str_args(vec![$($arg),*]).map(|c|c.cmd())
     };
 }
 
@@ -217,7 +217,11 @@ mod tests {
 
         let cmd = cmd!["git", "--version"];
         assert!(cmd.is_ok());
-        assert_eq!(cmd.clone().unwrap().command, "git");
-        assert_eq!(cmd.unwrap().args, vec!["--version"]);
+        let mut cmd = cmd.unwrap();
+        assert_eq!(cmd.get_program(), "git");
+        assert_eq!(cmd.get_args().collect::<Vec<_>>(), vec!["--version"]);
+        let output = cmd.output().unwrap();
+        assert!(output.status.success());
+        assert!(output.stdout.starts_with(b"git version"));
     }
 }
