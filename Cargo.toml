@@ -4,7 +4,11 @@ authors = ["suquiya <22910980+suquiya@users.noreply.github.com>"]
 edition = "2024"
 description = "exrs is a command executor wrapping `std::process::Command`."
 license = "MIT"
-version = "1.0.0"
+repository = "https://github.com/suquiya/exrs"
+documentation = "https://docs.rs/exrs"
+readme = "README.md"
+categories = ["command-line-interface"]
+keywords = ["command", "arg", "command-line", "utility"]
 
 [features]
 cmd = []
