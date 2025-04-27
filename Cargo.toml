@@ -10,7 +10,7 @@ homepage = "https://github.com/suquiya/exrs"
 readme = "README.md"
 categories = ["command-line-interface"]
 keywords = ["command", "arg", "command-line", "utility"]
-version = "1.0.0"
+version = "1.0.1"
 
 [features]
 cmd = []
