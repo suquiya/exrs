@@ -1,4 +1,7 @@
 # exrs
+![crates.io](https://img.shields.io/crates/v/exrs)
+![version](https://img.shields.io/github/v/tag/suquiya/combu)
+![license](https://img.shields.io/github/license/suquiya/combu)
 exrs is a command executor wrapping `std::process::Command`.
 exrsは`std::process::Command`のラッパーです。
 This is for executing command from rust code eazily than `std::process::Command` and get result.
