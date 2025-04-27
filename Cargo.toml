@@ -6,6 +6,7 @@ description = "exrs is a command executor wrapping `std::process::Command`."
 license = "MIT"
 repository = "https://github.com/suquiya/exrs"
 documentation = "https://docs.rs/exrs"
+homepage = "https://github.com/suquiya/exrs"
 readme = "README.md"
 categories = ["command-line-interface"]
 keywords = ["command", "arg", "command-line", "utility"]
