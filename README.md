@@ -3,10 +3,10 @@
 ![version](https://img.shields.io/github/v/tag/suquiya/combu)
 ![license](https://img.shields.io/github/license/suquiya/combu)
 
-exrs is a command executor wrapping `std::process::Command`.
-exrsは`std::process::Command`のラッパーです。
+exrs is a command executor library by using `std::process::Command`.
+exrsは`std::process::Command`を使用したコマンド実行用ライブラリです。
 This is for executing command from rust code eazily than `std::process::Command` and get result.
-ちょっと楽にコマンドをrustコードから実行し、結果を取得するためのライブラリです。
+ちょっと楽にコマンドをrustコードから実行し、結果を取得するためのものです。
 
 # Documentation
 

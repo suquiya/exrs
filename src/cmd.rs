@@ -1,6 +1,9 @@
+//! cmd module for exec command.
+
 use std::process::Command;
 
 #[derive(Debug, Clone)]
+/// struct for command
 pub struct Cmd {
     command: String,
     args: Vec<String>,
@@ -13,6 +16,15 @@ impl<T: Into<String>> From<Vec<T>> for Cmd {
     }
 }
 
+/// Splits a command line string into individual arguments.
+///
+/// # Arguments
+///
+/// * `cmd_line_str` - A string slice that holds the command line input.
+///
+/// # Returns
+///
+/// A vector of strings where each element is an argument from the command line input.
 pub fn get_args_from_line(cmd_line_str: &str) -> Vec<String> {
     let args = cmd_line_str
         .split(" ")
@@ -22,6 +34,7 @@ pub fn get_args_from_line(cmd_line_str: &str) -> Vec<String> {
 }
 
 #[derive(Debug)]
+/// enum for error
 pub enum Error {
     Parse(ParseError),
     Exec(ExecError),
@@ -141,6 +154,11 @@ impl Cmd {
     }
 }
 
+/// Runs command with given arguments and returns result.
+///
+/// # Errors
+/// - `Error::Parse` - When `Cmd::from_args` fails to parse given arguments.
+/// - `Error::Exec` - When `Cmd::run` fails to execute the command.
 pub fn exes_with_result<T: Into<String>>(args: Vec<T>) -> Result<String, Error> {
     Cmd::from_args(args.into_iter().map(|s| s.into()).collect())
         .map_err(Error::Parse)?
@@ -148,10 +166,12 @@ pub fn exes_with_result<T: Into<String>>(args: Vec<T>) -> Result<String, Error> 
         .map_err(Error::Exec)
 }
 
+/// Run command with given arguments. Returns string, if it fails to execute the command, returns error message.
 pub fn exes<T: Into<String>>(args: Vec<T>) -> String {
     exes_with_result(args).unwrap_or_else(|e| e.to_string())
 }
 
+/// Run command with given arguments.
 #[macro_export]
 macro_rules! exes {
     ($($arg:expr),*) => {
@@ -159,6 +179,7 @@ macro_rules! exes {
     };
 }
 
+/// Run command with given arguments and returns result.
 #[macro_export]
 macro_rules! exes_with_result {
     ($($arg:expr),*) => {
@@ -166,6 +187,7 @@ macro_rules! exes_with_result {
     };
 }
 
+/// Generate cmd with given arguments.
 #[macro_export]
 macro_rules! cmd{
     ($($arg:expr),*) => {
@@ -173,6 +195,11 @@ macro_rules! cmd{
     };
 }
 
+/// Runs command with given command line string and returns result.
+///
+/// # Errors
+/// - `Error::Parse` - When this fails to parse given command line string.
+/// - `Error::Exec` - When this fails to execute the command.
 pub fn exli_with_result(cmd_line_str: &str) -> Result<String, Error> {
     Cmd::from_line_str(cmd_line_str)
         .map_err(Error::Parse)?
@@ -180,6 +207,7 @@ pub fn exli_with_result(cmd_line_str: &str) -> Result<String, Error> {
         .map_err(Error::Exec)
 }
 
+/// Run command with given command line string. Returns string, if it fails to execute the command, returns error message.
 pub fn exli(cmd_line_str: &str) -> String {
     exli_with_result(cmd_line_str).unwrap_or_else(|e| e.to_string())
 }
