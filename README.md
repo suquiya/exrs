@@ -1,7 +1,7 @@
 # exrs
 [![crates.io](https://img.shields.io/crates/v/exrs)](https://crates.io/crates/exrs)
-![version](https://img.shields.io/github/v/tag/suquiya/combu)
-![license](https://img.shields.io/github/license/suquiya/combu)
+![version](https://img.shields.io/github/v/tag/suquiya/exrs)
+![license](https://img.shields.io/github/license/suquiya/exrs)
 
 exrs is a command executor library by using `std::process::Command`.
 exrsは`std::process::Command`を使用したコマンド実行用ライブラリです。
