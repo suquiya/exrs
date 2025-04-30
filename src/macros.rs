@@ -61,6 +61,7 @@ mod tests {
         assert!(output.stdout.starts_with(b"git version"));
     }
 
+    #[cfg(feature = "shell")]
     #[test]
     fn sh_test() {
         let result = sh!("echo", "hello");
