@@ -171,30 +171,6 @@ pub fn exes<T: Into<String>>(args: Vec<T>) -> String {
     exes_with_result(args).unwrap_or_else(|e| e.to_string())
 }
 
-/// Run command with given arguments.
-#[macro_export]
-macro_rules! exes {
-    ($($arg:expr),*) => {
-        exes(vec![$($arg),*])
-    };
-}
-
-/// Run command with given arguments and returns result.
-#[macro_export]
-macro_rules! exes_with_result {
-    ($($arg:expr),*) => {
-        exes_with_result(vec![$($arg),*])
-    };
-}
-
-/// Generate cmd with given arguments.
-#[macro_export]
-macro_rules! cmd{
-    ($($arg:expr),*) => {
-        Cmd::from_str_args(vec![$($arg),*]).map(|c|c.cmd())
-    };
-}
-
 /// Runs command with given command line string and returns result.
 ///
 /// # Errors
@@ -214,6 +190,7 @@ pub fn exli(cmd_line_str: &str) -> String {
 
 #[cfg(test)]
 mod tests {
+
     use super::*;
     #[test]
     fn test_cmd_from_str() {
@@ -233,23 +210,5 @@ mod tests {
     fn exes_test() {
         let result = exes(vec!["git", "--version"]);
         assert!(result.starts_with("git version"));
-    }
-
-    #[test]
-    fn macros_test() {
-        let result = exes!["git", "--version"];
-        assert!(result.starts_with("git version"));
-        let result2 = exes_with_result!("git", "--version");
-        assert!(result2.is_ok());
-        assert!(result2.unwrap().starts_with("git version"));
-
-        let cmd = cmd!["git", "--version"];
-        assert!(cmd.is_ok());
-        let mut cmd = cmd.unwrap();
-        assert_eq!(cmd.get_program(), "git");
-        assert_eq!(cmd.get_args().collect::<Vec<_>>(), vec!["--version"]);
-        let output = cmd.output().unwrap();
-        assert!(output.status.success());
-        assert!(output.stdout.starts_with(b"git version"));
     }
 }

@@ -24,20 +24,6 @@ pub fn sh<T: Into<String>>(args: Vec<T>) -> String {
     sh_with_result(args).unwrap_or_else(|e| e.to_string())
 }
 
-#[macro_export]
-macro_rules! sh {
-    ($($arg:expr),*) => {
-        sh(vec![$($arg),*])
-    };
-}
-
-#[macro_export]
-macro_rules! sh_with_result {
-    ($($arg:expr),*) => {
-        sh_with_result(vec![$($arg),*])
-    };
-}
-
 pub fn shli_with_result(cmd_line_str: &str) -> Result<String, ExecError> {
     let args = get_args_from_line(cmd_line_str);
     let cmd = cmd_sh_from_args(args);
