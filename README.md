@@ -1,5 +1,5 @@
 # exrs
-![crates.io](https://img.shields.io/crates/v/exrs)
+[![crates.io](https://img.shields.io/crates/v/exrs)](https://crates.io/crates/exrs)
 ![version](https://img.shields.io/github/v/tag/suquiya/combu)
 ![license](https://img.shields.io/github/license/suquiya/combu)
 
@@ -17,7 +17,7 @@ This is for executing command from rust code eazily than `std::process::Command`
 exrs exists on crates.io.
 You can use(or import) this crate like other crate that exists on crates.io.
 
-exrs は crates.io に登録してありますので、他の crates.io 上のクレートと同じように使用（インポート）することが可能です。
+exrs は [crates.io に登録してあります](https://crates.io/crates/exrs)ので、他の crates.io 上のクレートと同じように使用（インポート）することが可能です。
 
 ## Edit cargo.toml manually (手動での cargo.toml への追加)
 
